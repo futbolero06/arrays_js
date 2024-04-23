@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Estadísticas de una lista de números</title>
+</head>
+<body>
+    <h1>Estadísticas de una lista de números</h1>
+    <input type="text" id="listaNumeros" placeholder="Introduce una lista de números separados por coma">
+    <button onclick="calcularEstadisticas()">Calcular</button>
+    <div id="resultados"></div>
+
+    <script>
+        function calcularEstadisticas() {
+            const listaNumeros = document.getElementById('listaNumeros').value.split(',');
+            const numeros = listaNumeros.map(Number);
+
+            let suma = 0;
+            let mayor = numeros[0];
+            let menor = numeros[0];
+
+            for (let i = 0; i < numeros.length; i++) {
+                suma += numeros[i];
+                if (numeros[i] > mayor) {
+                    mayor = numeros[i];
+                }
+                if (numeros[i] < menor) {
+                    menor = numeros[i];
+                }
+            }
+
+            const media = suma / numeros.length;
+
+            const resultados = `
+                <p>Suma: ${suma}</p>
+                <p>Mayor: ${mayor}</p>
+                <p>Menor: ${menor}</p>
+                <p>Media: ${media.toFixed(2)}</p>
+            `;
+
+            document.getElementById('resultados').innerHTML = resultados;
+        }
+    </script>
+</body>
+</html>
