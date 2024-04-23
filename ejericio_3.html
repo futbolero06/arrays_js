@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array con botones</title>
+</head>
+<body>
+    <h1>Array dinámico</h1>
+    <input type="text" id="elemento" placeholder="Introduce un elemento">
+    <button onclick="agregarElemento()">Agregar</button>
+    <button onclick="eliminarElemento()">Eliminar último</button>
+    <p id="array"></p>
+
+    <script>
+        let array = [];
+
+        function agregarElemento() {
+        const elemento = document.getElementById('elemento').value;
+        array.push(elemento);
+        mostrarArray();
+        document.getElementById('elemento').value = '';
+        }
+
+        function eliminarElemento() {
+        if (array.length > 0) {
+            array.pop();
+            mostrarArray();
+        }
+        }
+
+        function mostrarArray() {
+        const arrayTexto = array.join(', ');
+        document.getElementById('array').textContent = 'Array: ' + arrayTexto;
+        }
+    </script>
+</body>
+</html>
